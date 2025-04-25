@@ -17,7 +17,8 @@ const App = () => {
   const [selected, setSelected] = useState(0)
 
   const handleNextAnecdote = () => {
-    setSelected((prev) => (prev === anecdotes.length - 1 ? 0 : prev + 1))
+    const randomIndex = Math.floor(Math.random() * anecdotes.length)
+    setSelected(randomIndex)
   }
 
   const handleVote = () => {
