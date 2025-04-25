@@ -26,12 +26,29 @@ const App = () => {
     setVotes(newVotes)
   }
 
+  // Find the index of the most voted anecdote.
+  const maxVotes = Math.max(...votes)
+  const mostVotedIndex = votes.indexOf(maxVotes)
+
   return (
     <div>
-      <p>{anecdotes[selected]}</p>
-      <p>has {votes[selected]} vote{votes[selected] !== 1 ? 's' : ''}</p>
-      <button onClick={handleVote}>vote</button>
-      <button onClick={handleNextAnecdote}>next anecdote</button>
+      <div>
+        <p>{anecdotes[selected]}</p>
+        <p>has {votes[selected]} vote{votes[selected] !== 1 ? 's' : ''}</p>
+        <button onClick={handleVote}>vote</button>
+        <button onClick={handleNextAnecdote}>next anecdote</button>
+      </div>
+      <div>
+        <h2>Anecdote with most votes</h2>
+        {maxVotes === 0 ? (
+          <p>No votes yet</p>
+        ) : (
+          <>
+            <p>{anecdotes[mostVotedIndex]}</p>
+            <p>has {maxVotes} vote{maxVotes !== 1 ? 's' : ''}</p>
+          </>
+        )}
+      </div>
     </div>
   )
 }
